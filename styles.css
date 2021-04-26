@@ -1,10 +1,21 @@
-#list {
+@font-face {
+    font-family: 'CookieRunOTF-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#logo {
+    font-family: "CookieRun Black";
+    font-size: xx-large;
+}
+.list {
     margin: 10px;
     padding: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 #item {
     float: left;
     width: 33.3%;
@@ -14,13 +25,13 @@
     overflow: hidden;
     height: 88px;
     padding: 15px 21px 0 0;
-    font-size: 20px;
+    font-size: 17px;
 }
 #img {
     display: block;
     overflow: hidden;
     position: relative;
-    width: 80%;
+    width: 85%;
     height: 170px;
 }
 #url {
@@ -31,39 +42,26 @@
     font-size: 13px;
     color: #3403f3;
 }
-#divider {
+.tab {
     width: 100%;
-    color: black;
-}
-
-ul {
+    height: 50px;
     display: flex;
-    padding: 0;
-    list-style: none;
-}
-li {
-    display: inline-flex;
-    padding: 8px 12px;
-    cursor: pointer;
-    color: #999;
-    border-bottom: 2px solid transparent;
-}
-li:hover {
-    color: #555;
-    transition: 0.5s;
-}
-li.active {
-    color: slateblue;
-    border-bottom: 2px solid slateblue;
-}
-li.active:hover {
-    background-color: slateblue;
-    color: #fff;
 }
 
-[data-tab-content] {
-    display: none;
+.tablinks {
+    float: left;
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: grey;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-right: 20px;
 }
-.active[data-tab-content] {
-    display: block;
+
+.tablinks.active {
+    color: #fff;
+    background-color: #6161ff;
+    border: 1px solid #6161ff;
 }
