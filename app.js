@@ -1,5 +1,8 @@
 const $listContent = document.getElementById('content');
+const $moreBtn = document.querySelector('.btn');
 let jsonFile = './recent.json'
+let count = 10;
+let arr = [];
 
 getFile(jsonFile);
 
@@ -12,6 +15,7 @@ function openTab(event, tabName) {
         while ($listContent.hasChildNodes()) {
             $listContent.removeChild($listContent.firstChild);
         }
+        count = 10;
     }
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
@@ -23,7 +27,7 @@ function openTab(event, tabName) {
     getFile(jsonFile);
 }
 
-
+// json 파일 불러오기
 function getFile(fileName) {
     const data = new XMLHttpRequest();
     data.open('GET', fileName);
@@ -31,6 +35,13 @@ function getFile(fileName) {
     data.onload = function () {
         let item = JSON.parse(data.responseText);
         for (key in item) {
+
+            const $id = item[key].id;
+            if (arr.includes($id)) {
+                continue;
+            }
+            arr.push($id);
+
             const $img = document.createElement('img');
             $img.setAttribute("id", "img");
             $img.height = 200;
@@ -41,18 +52,36 @@ function getFile(fileName) {
             $title.setAttribute("id", "title");
             $title.innerText = item[key].title;
 
+            const $url = document.createElement('a');
+            $url.setAttribute("id", "url");
+            $url.href = item[key].url;
+
             const $cp = document.createElement('div');
             $cp.setAttribute("id", "cp");
             $cp.innerText = item[key].cp;
 
             const $container = document.createElement('div');
             $container.setAttribute("id","item");
-            $container.appendChild($img);
-            $container.appendChild($title);
-            $container.appendChild($cp);
 
+            $url.appendChild($img);
+            $url.appendChild($title);
+            $url.appendChild($cp);
+
+            $container.appendChild($url);
 
             $listContent.appendChild($container);
+
+            if ($listContent.childElementCount === count) {
+                break;
+            }
         }
     }
 }
+
+// 더보기버튼 (10개씩 불러오기)
+$moreBtn.addEventListener('click', function (){
+    count += 10;
+    getFile(jsonFile);
+})
+
+
