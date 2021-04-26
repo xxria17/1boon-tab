@@ -16,28 +16,16 @@
 </head>
 <body>
 <div class="container">
-    <h1>1boon 콘텐츠</h1>
+    <h1 id="logo">1boon</h1>
 
-    <div>
-        <ul class="tabs">
-            <li class="active" data-tab-target="#recent">최근</li>
-            <li class="" data-tab-target="#views">많이본</li>
-            <li class="" data-tab-target="#popular">실시간인기</li>
-        </ul>
+    <div class="tab">
+        <button id="recent" class="tablinks active" onclick="openTab(event, 'list')">최신순</button>
+        <button id="popular" class="tablinks" onclick="openTab(event, 'list')">실시간 인기</button>
+        <button id="view" class="tablinks" onclick="openTab(event, 'list')">많이 본</button>
     </div>
-    <div class="tab-content">
-        <div id="recent" data-tab-content class="active">
-            <div id="list"></div>
-        </div>
-        <div id="views" data-tab-content>
-            <h3>많이 본</h3>
-        </div>
-        <div id="popular" data-tab-content>
-            <h3>실시간 인기</h3>
-        </div>
-    </div>
-    <div class="text-center">
-        <button type="button" class="btn btn-default">더보기</button>
+
+    <div id="list" class="tabContent" style="display: block;">
+        <div id="content" ></div>
     </div>
 </div>
 <script src="app.js"></script>
