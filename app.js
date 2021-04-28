@@ -5,7 +5,6 @@ let count = 10;
 let arr = [];
 
 setLoading();
-// getFile(jsonFile);
 
 //tab menu
 function openTab(event, tabName) {
